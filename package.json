@@ -29,7 +29,7 @@
   "homepage": "https://github.com/metadeta96/color-prism#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "uglify-js": "^3.6.0"
   }
 }
