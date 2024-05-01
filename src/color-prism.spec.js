@@ -1,9 +1,12 @@
-const chai = require('chai');
-const expect = chai.expect;
-const should = chai.should;
-
 const ColorPrism = require('./color-prism');
 
+let expect;
+let should;
+before(async () => {
+    const chai = await import('chai');
+    expect = chai.expect;
+    should = chai.should;
+});
 
 describe('ColorPrism', () => {
     let red;
