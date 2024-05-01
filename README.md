@@ -6,7 +6,7 @@ Compatible for both Node.js and browser apps.
 
 ## Installation
 
-Download from [CDN](https://cdn.jsdelivr.net/npm/color-prism/dist/color-prism.min.js) or install from npm
+Download from [CDN](https://cdn.jsdelivr.net/npm/color-prism/dist/color-prism.min.js) or install from [npm](https://www.npmjs.com/package/color-prism)
 
 `npm install --save color-prism`
 
