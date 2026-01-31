@@ -463,15 +463,13 @@ const yellow = (y, r, g, b) => {
 
 /**
  * Generate the constant color object
- * @param  {RGB} rgbColor 
- * @return {object}
+ * @param  {RGB} object 
+ * @return {RGB}
  */
-const __generateConstantObject = (rgbColor) => {
-    return {
-        rgb: rgbColor,
-        hsl: rgbToHsl(rgbColor),
-        cmyk: rgbToCmyk(rgbColor)
-    };
+const __generateConstantObject = (object) => {
+    object = Object.seal(object);
+    object = Object.freeze(object);
+    return object;
 };
 
 /**

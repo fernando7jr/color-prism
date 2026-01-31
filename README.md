@@ -163,10 +163,14 @@ const moreYellow = yellow(0.9, color);
 ```javascript
 import { colors } from 'color-prism';
 
-// Access common colors in all formats
-console.log(colors.red.rgb);   // { r: 255, g: 0, b: 0 }
-console.log(colors.red.hsl);   // HSL representation
-console.log(colors.red.cmyk);  // CMYK representation
+// Access common colors (all are RGB objects)
+console.log(colors.red);      // RGB { r: 255, g: 0, b: 0 }
+console.log(colors.white);    // RGB { r: 255, g: 255, b: 255 }
+console.log(colors.black);    // RGB { r: 0, g: 0, b: 0 }
+
+// Convert to other formats as needed
+const redHsl = rgbToHsl(colors.red);
+const redCmyk = rgbToCmyk(colors.red);
 
 // Available colors: white, black, red, green, blue
 ```

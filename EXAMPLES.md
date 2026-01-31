@@ -205,12 +205,16 @@ const moreYellow = yellow(0.9, color);
 ### Working with Predefined Colors
 
 ```javascript
-import { colors } from 'color-prism';
+import { colors, rgbToHsl, rgbToCmyk } from 'color-prism';
 
-// Use predefined colors in all formats
-console.log('Red RGB:', colors.red.rgb);
-console.log('Red HSL:', colors.red.hsl);
-console.log('Red CMYK:', colors.red.cmyk);
+// Use predefined colors (all are RGB objects)
+console.log('Red RGB:', colors.red);        // RGB { r: 255, g: 0, b: 0 }
+console.log('White RGB:', colors.white);    // RGB { r: 255, g: 255, b: 255 }
+console.log('Black RGB:', colors.black);    // RGB { r: 0, g: 0, b: 0 }
+
+// Convert to other formats as needed
+const redHsl = rgbToHsl(colors.red);
+const redCmyk = rgbToCmyk(colors.red);
 
 // Available colors: white, black, red, green, blue
 const white = colors.white.rgb;

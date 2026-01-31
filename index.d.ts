@@ -256,33 +256,13 @@ export const constants: {
  */
 export const colors: {
   /** White color (RGB: 255, 255, 255) */
-  white: Readonly<{
-    rgb: RGB;
-    hsl: HSL;
-    cmyk: CMYK;
-  }>;
+  white: Readonly<RGB>;
   /** Black color (RGB: 0, 0, 0) */
-  black: Readonly<{
-    rgb: RGB;
-    hsl: HSL;
-    cmyk: CMYK;
-  }>;
+  black: Readonly<RGB>;
   /** Red color (RGB: 255, 0, 0) */
-  red: Readonly<{
-    rgb: RGB;
-    hsl: HSL;
-    cmyk: CMYK;
-  }>;
+  red: Readonly<RGB>;
   /** Green color (RGB: 0, 255, 0) */
-  green: Readonly<{
-    rgb: RGB;
-    hsl: HSL;
-    cmyk: CMYK;
-  }>;
+  green: Readonly<RGB>;
   /** Blue color (RGB: 0, 0, 255) */
-  blue: Readonly<{
-    rgb: RGB;
-    hsl: HSL;
-    cmyk: CMYK;
-  }>;
+  blue: Readonly<RGB>;
 };
