@@ -18,7 +18,8 @@
     "index.d.ts",
     "src/color-prism.js",
     "dist/color-prism.min.js",
-    "dist/color-prism.esm.mjs"
+    "dist/color-prism.esm.mjs",
+    "EXAMPLES.md"
   ],
   "scripts": {
     "test": "mocha ./src/**/*.spec.js",
