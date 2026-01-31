@@ -4,9 +4,29 @@
   "description": "Simple color manipulation functions",
   "type": "commonjs",
   "main": "index.js",
+  "module": "dist/color-prism.esm.mjs",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/color-prism.esm.mjs",
+      "require": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "src/color-prism.js",
+    "dist/color-prism.min.js",
+    "dist/color-prism.esm.mjs",
+    "EXAMPLES.md"
+  ],
   "scripts": {
     "test": "mocha ./src/**/*.spec.js",
-    "prepublish": "uglifyjs --compress --mangle --output dist/color-prism.min.js -- src/color-prism.js"
+    "build": "npm run build:esm && npm run build:min",
+    "build:esm": "cp src/color-prism.esm.js dist/color-prism.esm.mjs",
+    "build:min": "uglifyjs --compress --mangle --output dist/color-prism.min.js -- src/color-prism.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

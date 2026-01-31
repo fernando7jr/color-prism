@@ -1,327 +1,324 @@
 # ColorPrism
 
-Simple color manipulation functions.
+![npm version](https://img.shields.io/npm/v/color-prism.svg)
+![npm downloads](https://img.shields.io/npm/dm/color-prism.svg)
+![license](https://img.shields.io/npm/l/color-prism.svg)
 
-Compatible for both Node.js and browser apps.
+A lightweight, modern color manipulation library for JavaScript and TypeScript. Simple, fast, and compatible with both Node.js and browsers.
+
+## Features
+
+- 🎨 Support for RGB, HSL, and CMYK color spaces
+- 🔄 Easy color conversions between different formats
+- 🎯 Simple color transformations (hue, saturation, lightness, etc.)
+- 📦 Multiple distribution formats (CommonJS, ESM, minified)
+- 📘 Full TypeScript support with type definitions
+- 🌐 Works in both Node.js and browsers
+- ⚡ Zero dependencies
+- 🔧 Chainable API with utility functions
 
 ## Installation
 
-Download from [CDN](https://cdn.jsdelivr.net/npm/color-prism/dist/color-prism.min.js) or install from [npm](https://www.npmjs.com/package/color-prism)
+### NPM
 
-`npm install --save color-prism`
+```bash
+npm install color-prism
+```
+
+### CDN
+
+For browsers, you can use the minified version from CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/color-prism/dist/color-prism.min.js"></script>
+```
 
 ## Usage
 
-### Node.js
-
-On Node.js all the methods are available in the package level
+### ES Modules (Modern JavaScript/TypeScript)
 
 ```javascript
-// Import the package
-const ColorPrism = require('color-prism');
+// Import everything
+import ColorPrism from 'color-prism';
+const red = ColorPrism.rgb(255, 0, 0);
 
-// Create a new rgb color object;
-const rgbColor = ColorPrism.rgb(200, 0, 10);
+// Or import specific functions
+import { rgb, hsl, rgbToHsl, saturation } from 'color-prism';
+
+const color = rgb(255, 128, 0);
+const hslColor = rgbToHsl(color);
+const desaturated = saturation(0.3, color);
 ```
 
-### Browser
+### CommonJS (Node.js)
 
-On browsers, there are 3 aways to access the library:
+```javascript
+const ColorPrism = require('color-prism');
 
-* Use `ColorPrism` global object directly.
-* Use `window.ColorPrism` instead.
-* Use the methods directly. However the constants object will not be available this way.
+// Create color objects
+const red = ColorPrism.rgb(255, 0, 0);
+const blue = ColorPrism.hsl(4.71, 1, 0.5); // 270 degrees in radians
+```
 
-## Reference
+### Browser (Global)
 
-* [ColorPrism](#module_color-prism)
-    * [degreesToRad(degrees)](#module_color-prism..degreesToRad) ⇒ <code>number</code>
-    * [RGB(r, g, b)](#module_color-prism..RGB) ⇒ <code>RGB</code>
-        * [.normalize()](#module_color-prism..RGB+normalize) ⇒ <code>RGB</code>
-        * [.grayScale()](#module_color-prism..RGB+grayScale) ⇒ <code>RGB</code>
-    * [rgb(r, g, b)](#module_color-prism..rgb) ⇒ <code>RGB</code>
-    * [HSL(h, s, l)](#module_color-prism..HSL) ⇒ <code>HSL</code>
-    * [hsl(h, s, l)](#module_color-prism..hsl) ⇒ <code>HSL</code>
-    * [CMYK(c, m, y, k)](#module_color-prism..CMYK) ⇒ <code>CMYK</code>
-    * [cmyk(c, m, y, k)](#module_color-prism..cmyk) ⇒ <code>CMYK</code>
-    * [rgbToHsl(r, g, b)](#module_color-prism..rgbToHsl) ⇒ <code>HSL</code>
-    * [hslToRgb(h, s, l)](#module_color-prism..hslToRgb) ⇒ <code>RGB</code>
-    * [rgbToCmyk(r, g, b)](#module_color-prism..rgbToCmyk) ⇒ <code>CMYK</code>
-    * [cmykToRgb(c, m, y, k)](#module_color-prism..cmykToRgb) ⇒ <code>RGB</code>
-    * [normalize(r, g, b)](#module_color-prism..normalize) ⇒ <code>RGB</code>
-    * [grayScale(r, g, b)](#module_color-prism..grayScale) ⇒ <code>RGB</code>
-    * [hue(h, r, g, b)](#module_color-prism..hue) ⇒ <code>RGB</code>
-    * [saturation(s, r, g, b)](#module_color-prism..saturation) ⇒ <code>RGB</code>
-    * [lighting(l, r, g, b)](#module_color-prism..lighting) ⇒ <code>RGB</code>
-    * [cyan(c, r, g, b)](#module_color-prism..cyan) ⇒ <code>RGB</code>
-    * [magenta(m, r, g, b)](#module_color-prism..magenta) ⇒ <code>RGB</code>
-    * [yellow(y, r, g, b)](#module_color-prism..yellow) ⇒ <code>RGB</code>
+```html
+<script src="https://cdn.jsdelivr.net/npm/color-prism/dist/color-prism.min.js"></script>
+<script>
+  // Access via ColorPrism object
+  const red = ColorPrism.rgb(255, 0, 0);
+  
+  // Or use functions directly
+  const blue = rgb(0, 0, 255);
+  const purple = saturation(0.8, blue);
+</script>
+```
 
-<a name="module_color-prism..degreesToRad"></a>
+### TypeScript
 
-### degreesToRad(degrees) ⇒ <code>number</code>
-Convert degrees to radian
+ColorPrism includes full TypeScript definitions:
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+```typescript
+import { RGB, HSL, rgb, hsl, rgbToHsl } from 'color-prism';
 
-| Param | Type |
-| --- | --- |
-| degrees | <code>number</code> | 
+const color: RGB = rgb(255, 128, 0);
+const hslColor: HSL = rgbToHsl(color);
 
-<a name="module_color-prism..RGB"></a>
+console.log(`RGB: ${color.r}, ${color.g}, ${color.b}`);
+console.log(`HSL: ${hslColor.h}, ${hslColor.s}, ${hslColor.l}`);
+```
 
-### RGB(r, g, b) ⇒ <code>RGB</code>
-RGB class for storing color values
+## Quick Examples
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+### Creating Colors
 
-| Param | Type | Description |
-| --- | --- | --- |
-| r | <code>number</code> | red value (0..255) or {RGB} instance or {CMYK} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
+```javascript
+import { rgb, hsl, cmyk } from 'color-prism';
 
-<a name="module_color-prism..RGB+normalize"></a>
+// RGB: values from 0 to 255
+const red = rgb(255, 0, 0);
 
-#### RGB.normalize() ⇒ <code>RGB</code>
-Change the range from `0 to 255` to `0 to 1`
+// HSL: hue in radians (0 to 2π), saturation and lightness from 0 to 1
+const blue = hsl(4.71, 1, 0.5);
 
-**Kind**: instance method of [<code>RGB</code>](#module_color-prism..RGB)  
+// CMYK: values from 0 to 1
+const cyan = cmyk(1, 0, 0, 0);
+```
 
-<a name="module_color-prism..RGB+grayScale"></a>
+### Converting Between Color Spaces
 
-#### RGB.grayScale() ⇒ <code>RGB</code>
-Get a gray scale rgb color from this color
+```javascript
+import { rgb, rgbToHsl, hslToRgb, rgbToCmyk, cmykToRgb } from 'color-prism';
 
-**Kind**: instance method of [<code>RGB</code>](#module_color-prism..RGB)  
+const color = rgb(255, 128, 0);
 
-<a name="module_color-prism..rgb"></a>
+// Convert to HSL
+const hslColor = rgbToHsl(color);
+console.log(hslColor); // { h: 0.524, s: 1, l: 0.5 }
 
-### rgb(r, g, b) ⇒ <code>RGB</code>
-RGB helper function
+// Convert to CMYK
+const cmykColor = rgbToCmyk(color);
+console.log(cmykColor); // { c: 0, m: 0.498, y: 1, k: 0 }
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+// Convert back to RGB
+const backToRgb = cmykToRgb(cmykColor);
+console.log(backToRgb); // { r: 255, g: 128, b: 0 }
+```
 
-| Param | Type | Description |
-| --- | --- | --- |
-| r | <code>number</code> | red value (0..255) or {RGB} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
+### Color Transformations
 
-<a name="module_color-prism..HSL"></a>
+```javascript
+import { rgb, hue, saturation, lighting, grayScale } from 'color-prism';
 
-### HSL(h, s, l) ⇒ <code>HSL</code>
-HSL class for storing color values
+const orange = rgb(255, 128, 0);
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+// Change hue (rotate color wheel)
+const rotated = hue(3.14, orange); // π radians (180 degrees)
 
-| Param | Type | Description |
-| --- | --- | --- |
-| h | <code>number</code> | hue value (0..2PI) or {HSL} instance |
-| s | <code>number</code> | saturation value (0..1) |
-| l | <code>number</code> | lighting value (0..1) |
+// Adjust saturation (0 = grayscale, 1 = fully saturated)
+const desaturated = saturation(0.3, orange);
 
-<a name="module_color-prism..hsl"></a>
+// Adjust lightness (0 = black, 0.5 = normal, 1 = white)
+const darker = lighting(0.3, orange);
 
-### hsl(h, s, l) ⇒ <code>HSL</code>
-HSL helper function
+// Convert to grayscale
+const gray = grayScale(orange);
+```
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+### CMYK Adjustments
 
-| Param | Type | Description |
-| --- | --- | --- |
-| h | <code>number</code> | hue value (0..2PI) or {HSL} instance |
-| s | <code>number</code> | saturation value (0..1) |
-| l | <code>number</code> | lighting value (0..1) |
+```javascript
+import { rgb, cyan, magenta, yellow } from 'color-prism';
 
-<a name="module_color-prism..CMYK"></a>
+const color = rgb(255, 128, 0);
 
-### CMYK(c, m, y, k) ⇒ <code>CMYK</code>
-CMYK class for storing color values
+// Adjust individual CMYK components
+const moreCyan = cyan(0.5, color);
+const moreMagenta = magenta(0.7, color);
+const moreYellow = yellow(0.9, color);
+```
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+### Using Predefined Colors
 
-| Param | Type | Description |
-| --- | --- | --- |
-| c | <code>number</code> | cyan value (0..1) or {CMYK} instance or {RGB} instance |
-| m | <code>number</code> | magenta value (0..1) |
-| y | <code>number</code> | yellow value (0..1) |
-| k | <code>number</code> | black key value (0..1) |
+```javascript
+import { colors } from 'color-prism';
 
-<a name="module_color-prism..cmyk"></a>
+// Access common colors (all are RGB objects)
+console.log(colors.red);      // RGB { r: 255, g: 0, b: 0 }
+console.log(colors.white);    // RGB { r: 255, g: 255, b: 255 }
+console.log(colors.black);    // RGB { r: 0, g: 0, b: 0 }
 
-### cmyk(c, m, y, k) ⇒ <code>CMYK</code>
-CMYK helper function
+// Convert to other formats as needed
+const redHsl = rgbToHsl(colors.red);
+const redCmyk = rgbToCmyk(colors.red);
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+// Available colors: white, black, red, green, blue
+```
 
-| Param | Type | Description |
-| --- | --- | --- |
-| c | <code>number</code> | cyan value (0..1) or {CMYK} instance or {RGB} instance |
-| m | <code>number</code> | magenta value (0..1) |
-| y | <code>number</code> | yellow value (0..1) |
-| k | <code>number</code> | black key value (0..1) |
+### Utility Functions
 
-<a name="module_color-prism..rgbToHsl"></a>
+```javascript
+import { degreesToRad, normalize, constants } from 'color-prism';
 
-### rgbToHsl(r, g, b) ⇒ <code>HSL</code>
-Method to convert RGB to HSL
+// Convert degrees to radians for HSL hue
+const hueInRadians = degreesToRad(180); // 3.14159...
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+// Normalize RGB values from 0-255 to 0-1
+const normalized = normalize(255, 128, 0); // { r: 1, g: 0.502, b: 0 }
 
-| Param | Type | Description |
-| --- | --- | --- |
-| r | <code>number</code> | red value (0..255) or {RGB} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
+// Common angle constants
+console.log(constants.d180Rad); // π
+console.log(constants.d360Rad); // 2π
+```
 
-<a name="module_color-prism..hslToRgb"></a>
+### Method Chaining
 
-### hslToRgb(h, s, l) ⇒ <code>RGB</code>
-Method to convert HSL to RGB
+```javascript
+import { rgb } from 'color-prism';
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+const color = rgb(255, 128, 0);
 
-| Param | Type | Description |
-| --- | --- | --- |
-| h | <code>number</code> | hue value (0..2PI) or {HSL} instance |
-| s | <code>number</code> | saturation value (0..255) |
-| l | <code>number</code> | lighting value (0..255) |
+// Chain transformations using class methods
+const result = color
+  .normalize()    // Convert to 0-1 range
+  .grayScale();   // Convert to grayscale
+```
 
-<a name="module_color-prism..rgbToCmyk"></a>
+## API Reference
 
-### rgbToCmyk(r, g, b) ⇒ <code>CMYK</code>
-Method to convert RGB to CMYK
+### Color Classes
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+#### `RGB(r, g, b)`
+Creates an RGB color object.
+- `r`: Red value (0-255) or RGB/CMYK instance
+- `g`: Green value (0-255)
+- `b`: Blue value (0-255)
 
-| Param | Type | Description |
-| --- | --- | --- |
-| r | <code>number</code> | red value (0..255) or {RGB} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
+**Methods:**
+- `.normalize()`: Returns RGB with values in 0-1 range
+- `.grayScale()`: Returns grayscale version
 
-<a name="module_color-prism..cmykToRgb"></a>
+#### `HSL(h, s, l)`
+Creates an HSL color object.
+- `h`: Hue in radians (0-2π) or HSL instance
+- `s`: Saturation (0-1)
+- `l`: Lightness (0-1)
 
-### cmykToRgb(c, m, y, k) ⇒ <code>RGB</code>
-Method to convert CMYK to RGB
+#### `CMYK(c, m, y, k)`
+Creates a CMYK color object.
+- `c`: Cyan (0-1) or CMYK/RGB instance
+- `m`: Magenta (0-1)
+- `y`: Yellow (0-1)
+- `k`: Key/Black (0-1)
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+### Helper Functions
 
-| Param | Type | Description |
-| --- | --- | --- |
-| c | <code>number</code> | cyan value (0..1) or {CMYK} instance |
-| m | <code>number</code> | magenta value (0..1) |
-| y | <code>number</code> | yellow value (0..1) |
-| k | <code>number</code> | black key value (0..1) |
+- `rgb(r, g, b)`: Create RGB instance
+- `hsl(h, s, l)`: Create HSL instance
+- `cmyk(c, m, y, k)`: Create CMYK instance
 
-<a name="module_color-prism..normalize"></a>
+### Conversion Functions
 
-### normalize(r, g, b) ⇒ <code>RGB</code>
-Change the range of a RGB color from `0 to 255` to `0 to 1`
+- `rgbToHsl(r, g, b)`: Convert RGB to HSL
+- `hslToRgb(h, s, l)`: Convert HSL to RGB
+- `rgbToCmyk(r, g, b)`: Convert RGB to CMYK
+- `cmykToRgb(c, m, y, k)`: Convert CMYK to RGB
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+### Transformation Functions
 
-| Param | Type | Description |
-| --- | --- | --- |
-| r | <code>number</code> | red value (0..255) or {RGB} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
+- `normalize(r, g, b)`: Normalize RGB values to 0-1 range
+- `grayScale(r, g, b)`: Convert to grayscale
+- `hue(h, r, g, b)`: Change hue
+- `saturation(s, r, g, b)`: Change saturation
+- `lighting(l, r, g, b)`: Change lightness
+- `cyan(c, r, g, b)`: Adjust cyan component
+- `magenta(m, r, g, b)`: Adjust magenta component
+- `yellow(y, r, g, b)`: Adjust yellow component
 
-<a name="module_color-prism..grayScale"></a>
+### Utility Functions
 
-### grayScale(r, g, b) ⇒ <code>RGB</code>
-Get a gray scale rgb color
+- `degreesToRad(degrees)`: Convert degrees to radians
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+### Constants
 
-| Param | Type | Description |
-| --- | --- | --- |
-| r | <code>number</code> | red value (0..255) or {RGB} instance or {CMYK} instance or {HSL} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
+**Angle Constants:**
+- `constants.d60Rad`: 60° in radians
+- `constants.d120Rad`: 120° in radians
+- `constants.d180Rad`: 180° in radians
+- `constants.d240Rad`: 240° in radians
+- `constants.d300Rad`: 300° in radians
+- `constants.d360Rad`: 360° in radians
 
-<a name="module_color-prism..hue"></a>
+**Color Constants:**
+- `colors.white`: White color in all formats
+- `colors.black`: Black color in all formats
+- `colors.red`: Red color in all formats
+- `colors.green`: Green color in all formats
+- `colors.blue`: Blue color in all formats
 
-### hue(h, r, g, b) ⇒ <code>RGB</code>
-Change the hue value of a RGB color
+## Browser Support
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+The minified version (`dist/color-prism.min.js`) supports:
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Legacy browsers with ES5 support
+- Internet Explorer 9+
 
-| Param | Type | Description |
-| --- | --- | --- |
-| h | <code>number</code> | hue value (0..2PI) |
-| r | <code>number</code> | red value (0..255) or {RGB} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
+The ESM version (`dist/color-prism.esm.mjs`) requires:
+- Modern browsers with ES6+ support
+- Node.js 12+
 
-<a name="module_color-prism..saturation"></a>
+## TypeScript Support
 
-### saturation(s, r, g, b) ⇒ <code>RGB</code>
-Change the saturation value of a RGB color
+ColorPrism includes full TypeScript type definitions. No need to install additional `@types` packages.
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+```typescript
+import { RGB, HSL, CMYK, rgb, rgbToHsl } from 'color-prism';
 
-| Param | Type | Description |
-| --- | --- | --- |
-| s | <code>any</code> | saturation value (0..1) |
-| r | <code>number</code> | red value (0..255) or {RGB} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
+const myColor: RGB = rgb(255, 128, 0);
+const converted: HSL = rgbToHsl(myColor);
+```
 
-<a name="module_color-prism..lighting"></a>
+## Development
 
-### lighting(l, r, g, b) ⇒ <code>RGB</code>
-Change the lighting value of a RGB color
+```bash
+# Install dependencies
+npm install
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+# Run tests
+npm test
 
-| Param | Type | Description |
-| --- | --- | --- |
-| l | <code>any</code> | lighting value (0..1) |
-| r | <code>number</code> | red value (0..255) or {RGB} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
+# Build distribution files
+npm run build
+```
 
-<a name="module_color-prism..cyan"></a>
+## License
 
-### cyan(c, r, g, b) ⇒ <code>RGB</code>
-Change the cyan tone of a RGB color
+GPL-3.0-or-later
 
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
+## Contributing
 
-| Param | Type | Description |
-| --- | --- | --- |
-| c | <code>any</code> | lighting value (0..1) |
-| r | <code>number</code> | red value (0..255) or {RGB} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-<a name="module_color-prism..magenta"></a>
+## Repository
 
-### magenta(m, r, g, b) ⇒ <code>RGB</code>
-Change the magenta tone of a RGB color
-
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| m | <code>any</code> | lighting value (0..1) |
-| r | <code>number</code> | red value (0..255) or {RGB} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
-
-<a name="module_color-prism..yellow"></a>
-
-### yellow(y, r, g, b) ⇒ <code>RGB</code>
-Change the yellow tone of a RGB color
-
-**Kind**: inner method of [<code>ColorPrism</code>](#module_color-prism)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| y | <code>any</code> | lighting value (0..1) |
-| r | <code>number</code> | red value (0..255) or {RGB} instance |
-| g | <code>number</code> | green value (0..255) |
-| b | <code>number</code> | blue value (0..255) |
-
+[https://github.com/fernando7jr/color-prism](https://github.com/fernando7jr/color-prism)
