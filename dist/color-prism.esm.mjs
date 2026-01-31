@@ -5,7 +5,7 @@
  */
 
 /**
- * Convert degrees to radian
+ * Convert degrees to radians
  * @param  {number} degrees 
  * @return {number}
  */
