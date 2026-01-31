@@ -217,8 +217,8 @@ const redHsl = rgbToHsl(colors.red);
 const redCmyk = rgbToCmyk(colors.red);
 
 // Available colors: white, black, red, green, blue
-const white = colors.white.rgb;
-const black = colors.black.rgb;
+const white = colors.white;
+const black = colors.black;
 ```
 
 ### Using Constants
@@ -324,7 +324,7 @@ console.log(blueVariations);
 ## TypeScript Usage
 
 ```typescript
-import { RGB, HSL, CMYK, rgb, hsl, cmyk, rgbToHsl } from 'color-prism';
+import { RGB, HSL, CMYK, rgb, hsl, cmyk, rgbToHsl, lighting, saturation } from 'color-prism';
 
 // Type-safe color creation
 const myColor: RGB = rgb(255, 128, 0);

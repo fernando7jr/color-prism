@@ -283,7 +283,7 @@ The minified version (`dist/color-prism.min.js`) supports:
 - Legacy browsers with ES5 support
 - Internet Explorer 9+
 
-The ESM version (`dist/color-prism.esm.js`) requires:
+The ESM version (`dist/color-prism.esm.mjs`) requires:
 - Modern browsers with ES6+ support
 - Node.js 12+
 
